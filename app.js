@@ -1,10 +1,20 @@
 const express = require('express')
 const logger = require('morgan')
 
+const apiV1 = require('./apiv1.js')
+const apiV2 = require('./apiv2.js')
+
 const app = express()
 
 // 3rd party 🎉 Logger middleware
 app.use(logger('tiny'))
+
+/**
+ * @desc :example api versioning routes
+ * how to use versioning in your apis
+ */
+app.use('/v1', apiV1)
+app.use('/v2', apiV2)
 
 /**
  * @desc :example Route-Handler for hits to this EndPoint
